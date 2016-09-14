@@ -22,7 +22,7 @@ const int mqtt_port = 11565;
 const char *mqtt_user = "ask_your_instructor";
 const char *mqtt_pass = "ask_your_instructor";
 const char *mqtt_clientid = "CID-J1-Table01";   // check with instructor, following format: CID-J1-Table01, CID-OOW-Table02
-const char *mqtt_topic = "iotcs";               // to be sent over to Oracle IoT CS
+const char *mqtt_topic = "iotcs";               // topic to Oracle IoT CS, use iotcs-j1 for JavaOne, iotcs-oow for OpenWorld attendees
 const char *myname = "Raymond Xie";         // To indicate the message is from "Raymond Xie", replace it with your own name
 
 WiFiClient espClient;
