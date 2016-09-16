@@ -38,7 +38,7 @@ const int buzzerPin = D6;
 byte names[] = {'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C'};  
 int tones[] = {1915, 1700, 1519, 1432, 1275, 1136, 1014, 956};
 byte melody0[] = "2d2a1f2c2d2a2d2c2f2d2a2c2d2a1f2c2d2a2a2g2p8p8p8p";
-byte melody1[] = "2c2e2g2C2C2g2e2c2f2d2a2c2d2a1f2c2d2a2a2g2p8p";
+byte melody1[] = "2c2d2e2f2g2a2b2C2b2a2g2f2e2d1c2d2e2f2g2g2p8p";
 
 void playMelody(String payload) {
   byte melody[100];
@@ -84,7 +84,7 @@ void playMelody(String payload) {
 
 // Initial one-time setup
 void setup() {
-  pinMode(buttonPin, INPUT);      
+  pinMode(buttonPin, INPUT_PULLUP);      
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   Serial.begin(115200);
     
@@ -116,7 +116,7 @@ void checkButtonPress() {
   // compare the buttonState to its previous state
   if (buttonState != lastButtonState) {
     // if the state has changed, increment the counter
-    if (buttonState == HIGH) {
+    if (buttonState == LOW) {
       // if the current state is HIGH then the button was pressed
       buttonPushCounter++;
       if( buttonPushCounter == 2 ) {
@@ -128,7 +128,6 @@ void checkButtonPress() {
 
       // publish button press count
       client.publish(mqtt_topic, String(buttonPushCounter));
-
     }
   }
   

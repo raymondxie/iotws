@@ -30,14 +30,11 @@ PubSubClient client(espClient, mqtt_server, mqtt_port);
 
 // your button press input
 const int buttonPin = D2; 
-int buttonPushCounter = 0;   // counter for the number of button presses
 int buttonState = 0;         // current state of the button
-int lastButtonState = 0;     // previous state of the button
-
 
 // Initial one-time setup
 void setup() {
-  pinMode(buttonPin, INPUT);      
+  pinMode(buttonPin, INPUT_PULLUP);      
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   Serial.begin(115200);
     
@@ -65,16 +62,10 @@ void checkButtonPress() {
   buttonState = digitalRead(buttonPin);
   Serial.println(buttonState);
   
-  // compare the buttonState to its previous state
-  if (buttonState != lastButtonState) {
-    // if the state has changed, increment the counter
-    if (buttonState == HIGH) {
-      client.publish(mqtt_topic, myname);
-    }
+  // if the state has changed, increment the counter
+  if (buttonState == LOW) {
+    client.publish(mqtt_topic, myname);
   }
-  
-  // keep tracking buttonstate
-  lastButtonState = buttonState;
 }
 
 
