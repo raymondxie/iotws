@@ -37,7 +37,7 @@ int lastButtonState = 0;     // previous state of the button
 const int buzzerPin = D6;
 byte names[] = {'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C'};  
 int tones[] = {1915, 1700, 1519, 1432, 1275, 1136, 1014, 956};
-byte melody0[] = "4c4c4g4g4a4a4g4f4f4e4e4d4d4c4g4g4f4f4e4e4d8p8p8p";
+byte melody0[] = "4c4c4g4g5a5a8g4f4f3e3e3d3d8c4g4g4f4f4e4e8d8p8p8p";
 byte melody1[] = "8e6g2g4c4d4e4c4d3d1d4d2e2d2c1c1d2e2c8d8p8p";
 
 void playMelody(String payload) {
@@ -124,6 +124,9 @@ void checkButtonPress() {
         // reset 
         buttonPushCounter = 0;
       }
+
+      digitalWrite( BUILTIN_LED, LOW);
+
       Serial.print("number of button pushes:  ");
       Serial.println(buttonPushCounter);
 
@@ -144,6 +147,8 @@ void callback(const MQTT::Publish& pub) {
   Serial.print(" => ");
   String payload = pub.payload_string();
   Serial.println(payload);
+
+  digitalWrite( BUILTIN_LED, HIGH);
 
   // play different music based on return value
   playMelody(payload);
