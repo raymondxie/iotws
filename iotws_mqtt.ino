@@ -37,8 +37,8 @@ int lastButtonState = 0;     // previous state of the button
 const int buzzerPin = D6;
 byte names[] = {'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C'};  
 int tones[] = {1915, 1700, 1519, 1432, 1275, 1136, 1014, 956};
-byte melody0[] = "2d2a1f2c2d2a2d2c2f2d2a2c2d2a1f2c2d2a2a2g2p8p8p8p";
-byte melody1[] = "2c2d2e2f2g2a2b2C2b2a2g2f2e2d1c2d2e2f2g2g2p8p";
+byte melody0[] = "4c4c4g4g4a4a4g4f4f4e4e4d4d4c4g4g4f4f4e4e4d8p8p8p";
+byte melody1[] = "8e6g2g4c4d4e4c4d3d1d4d2e2d2c1c1d2e2c8d8p8p";
 
 void playMelody(String payload) {
   byte melody[100];
@@ -54,18 +54,20 @@ void playMelody(String payload) {
     }
   }
   else if( payload == "1") {
-    MAX_COUNT = 22;
+    MAX_COUNT = 21;
     for(count=0; count < MAX_COUNT*2; count++) {
       melody[count] = melody1[count];  
     }
   }
 
   analogWrite(buzzerPin, 0);     
+  analogWrite(buzzerPin, 0);     
+
   for (count = 0; count < MAX_COUNT; count++) {
     for (count3 = 0; count3 <= (melody[count*2] - 48) * 30; count3++) {
       for (count2=0;count2<8;count2++) {
-        if (names[count2] == melody[count*2 + 1]) {       
-          analogWrite(buzzerPin,500);
+        if (melody[count*2 + 1] == names[count2]) {       
+          analogWrite(buzzerPin,1000);
           delayMicroseconds(tones[count2]);
           analogWrite(buzzerPin, 0);
           delayMicroseconds(tones[count2]);
@@ -80,7 +82,6 @@ void playMelody(String payload) {
     delay(1);
   }  
 }
-
 
 // Initial one-time setup
 void setup() {
