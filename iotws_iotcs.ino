@@ -21,9 +21,9 @@ const char* mqtt_server = "m12.cloudmqtt.com";
 const int mqtt_port = 11565;  
 const char *mqtt_user = "ask_your_instructor";
 const char *mqtt_pass = "ask_your_instructor";
-const char *mqtt_clientid = "CID-J1-Table01";   // check with instructor, following format: CID-J1-Table01, CID-OOW-Table02
 const char *mqtt_topic = "iotcs";               // topic to Oracle IoT CS, use iotcs-j1 for JavaOne, iotcs-oow for OpenWorld attendees
 const char *myname = "Raymond Xie";         // To indicate the message is from "Raymond Xie", replace it with your own name
+String mqtt_clientid = "";
 
 WiFiClient espClient;
 PubSubClient client(espClient, mqtt_server, mqtt_port);
@@ -111,6 +111,7 @@ void setup_wifi() {
 // Connect to MQTT broker
 void reconnect() {
   while (!client.connected()) {
+    mqtt_clientid = String(ESP.getChipId());
     Serial.print("Attempting MQTT connection...");
     Serial.print(mqtt_clientid);
     Serial.print("  ");
