@@ -6,6 +6,7 @@ Arduino/NodeMCU source code for IoT Workshop.
 - [Arduino IDE installation](https://www.arduino.cc/en/Guide/HomePage)
 - [Install NodeMCU board support within IDE](http://theappslab.com/2016/09/14/iot-workshop-guide-part-1/). Follow step 2.
 - [Install USB-UART Driver support for Mac](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip).
+- [Install USB-UART Driver support for Windows](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx).
 
 ## use sample code
 - [Required MQTT library](https://github.com/Imroy/pubsubclient). 
