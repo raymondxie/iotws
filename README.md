@@ -1,5 +1,5 @@
 # iotws
-Arduino/NodeMCU source code for IoT Workshop. 
+Arduino/NodeMCU source code for IoT Workshop, hosted at JavaOne and Oracle OpenWorld 2016.
 
 ## software requisites
 - [Arduino IDE download](https://www.arduino.cc/en/Main/Software). Download corresponding platform for your computer.
