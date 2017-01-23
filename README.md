@@ -2,7 +2,7 @@
 
 Arduino/NodeMCU source code for IoT Workshop, hosted at Oracle Code 2017 events.
 
-Please refer to [wiki page](https://github.com/raymondxie/iotws/) for instruction, steps and technical details.
+Please refer to [wiki page](https://github.com/raymondxie/iotws/wiki/) for instruction, steps and technical details.
 
 <!--- 
 ## software requisites
