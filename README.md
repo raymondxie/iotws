@@ -1,6 +1,10 @@
-# iotws
-Arduino/NodeMCU source code for IoT Workshop, hosted at JavaOne and Oracle OpenWorld 2016.
+# IoT Workshop
 
+Arduino/NodeMCU source code for IoT Workshop, hosted at Oracle Code 2017 events.
+
+Please refer to [wiki page](https://github.com/raymondxie/iotws/) for instruction, steps and technical details.
+
+<!--- 
 ## software requisites
 - [Arduino IDE download](https://www.arduino.cc/en/Main/Software). Download corresponding platform for your computer.
 - [Arduino IDE installation](https://www.arduino.cc/en/Guide/HomePage)
@@ -12,3 +16,4 @@ Arduino/NodeMCU source code for IoT Workshop, hosted at JavaOne and Oracle OpenW
 - [Required MQTT library](https://github.com/Imroy/pubsubclient). 
   Download the .zip file, extract it to Arduino User Library directory, usually at "~/Documents/Arduino/libraries/".
 - [Refer test instruction](http://theappslab.com/2016/09/14/iot-workshop-guide-part-2/).
+--->
