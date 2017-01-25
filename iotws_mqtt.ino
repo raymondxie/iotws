@@ -3,26 +3,30 @@
  * Send button press count to MQTT broker, and listen to the channel to get back the count to play a music
  * 
  * Author: Raymond Xie
- * Date: 9/6/2016
+ * Created on: 9/6/2016
+ * Updated on: 1/24/2017
  * 
  */
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <MQTT.h>
 
-// HINT:  provide the following information
+// TODO:  provide the following connection information
 //
 // WiFi connection: SSID and Password
-const char* ssid = "your_wifi_ssid";
-const char* password = "your_wifi_passwd";
+const char* ssid = "otn_iotws";
+const char* password = "IoTWorkshop";
 
 // MQTT server params: server, port, user, password, and unique clientid
-const char* mqtt_server = "m12.cloudmqtt.com";
-const int mqtt_port = 11565; 
-const char *mqtt_user = "ask_your_instructor";
-const char *mqtt_pass = "ask_your_instructor";
-const char *mqtt_topic = "RX-music";            // prefix with your initials, so you don't interference with your fellow participants
+const char* mqtt_server = "192.168.20.251";
+const int mqtt_port = 1883; 
+const char *mqtt_user = "iotuser";
+const char *mqtt_pass = "iotpass";
+// prefix topic with your initials (RX for Raymond Xie), so you don't interference with your fellow participants
+// if you choose to use the same topic with other people, that's fun too - as you can control other's board.
+const char *mqtt_topic = "RX-music";          
 String mqtt_clientid = "";
+
 
 WiFiClient espClient;
 PubSubClient client(espClient, mqtt_server, mqtt_port);
@@ -83,6 +87,7 @@ void playMelody(String payload) {
   }  
 }
 
+
 // Initial one-time setup
 void setup() {
   pinMode(buttonPin, INPUT_PULLUP);      
@@ -126,10 +131,10 @@ void checkButtonPress() {
       }
 
       digitalWrite( BUILTIN_LED, LOW);
-
+      
       Serial.print("number of button pushes:  ");
       Serial.println(buttonPushCounter);
-
+      
       // publish button press count
       client.publish(mqtt_topic, String(buttonPushCounter));
     }
@@ -202,6 +207,7 @@ void reconnect() {
       delay(5000);
     }
   }
+  delay(500);
 }
 
 

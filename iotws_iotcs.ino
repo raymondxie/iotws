@@ -3,27 +3,30 @@
  * Press button to send your name to Oracle IoT Cloud Service with a hello message.
  * 
  * Author: Raymond Xie
- * Date: 9/6/2016
+ * Date: 9/7/2016
+ * Update: 1/24/2017
  * 
  */
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <MQTT.h>
 
-// HINT:  provide the following information
+// TODO:  provide the following connection information
 //
 // WiFi connection: SSID and Password
-const char* ssid = "your_wifi_ssid";
-const char* password = "your_wifi_passwd";
+const char* ssid = "otn_iotws";
+const char* password = "IoTWorkshop";
 
 // MQTT server params: server, port, user, password, and unique clientid
-const char* mqtt_server = "m12.cloudmqtt.com";
-const int mqtt_port = 11565;  
-const char *mqtt_user = "ask_your_instructor";
-const char *mqtt_pass = "ask_your_instructor";
-const char *mqtt_topic = "iotcs";               // topic to Oracle IoT CS, use iotcs-j1 for JavaOne, iotcs-oow for OpenWorld attendees
-const char *myname = "Raymond Xie";         // To indicate the message is from "Raymond Xie", replace it with your own name
+const char* mqtt_server = "192.168.20.251";
+const int mqtt_port = 1883; 
+const char *mqtt_user = "iotuser";
+const char *mqtt_pass = "iotpass";
+// MQTT topic: to be sent over to Oracle IoT CS
+const char *mqtt_topic = "iotcs-oc";           
 String mqtt_clientid = "";
+// To indicate the message is from "Raymond Xie", replace it with your own name
+const char *myname = "Raymond Xie";         
 
 WiFiClient espClient;
 PubSubClient client(espClient, mqtt_server, mqtt_port);
@@ -112,12 +115,14 @@ void setup_wifi() {
 void reconnect() {
   while (!client.connected()) {
     mqtt_clientid = String(ESP.getChipId());
+    
     Serial.print("Attempting MQTT connection...");
     Serial.print(mqtt_clientid);
     Serial.print("  ");
     Serial.print(mqtt_user);
     
     // Attempt to connect
+    
     if (client.connect(MQTT::Connect(mqtt_clientid).set_auth(mqtt_user, mqtt_pass))) {
       Serial.println("MQTT connected");
       
@@ -134,4 +139,5 @@ void reconnect() {
     }
   }
 }
+
 
