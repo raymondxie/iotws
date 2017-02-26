@@ -14,7 +14,7 @@
 // TODO:  provide the following connection information
 //
 // WiFi connection: SSID and Password
-const char* ssid = "otn_iotws";
+const char* ssid = "oc-iotws";
 const char* password = "IoTWorkshop";
 
 // MQTT server params: server, port, user, password, and unique clientid
