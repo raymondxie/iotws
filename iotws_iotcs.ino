@@ -14,11 +14,11 @@
 // TODO:  provide the following connection information
 //
 // WiFi connection: SSID and Password
-const char* ssid = "oc-iotws";
-const char* password = "IoTWorkshop";
+const char* ssid = "pmac28";
+const char* password = "bigbrowncat";
 
 // MQTT server params: server, port, user, password, and unique clientid
-const char* mqtt_server = "192.168.20.251";
+const char* mqtt_server = "10.158.29.149";
 const int mqtt_port = 1883; 
 const char *mqtt_user = "iotuser";
 const char *mqtt_pass = "iotpass";
