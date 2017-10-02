@@ -18,7 +18,7 @@ const char* ssid = "pmac28";
 const char* password = "bigbrowncat";
 
 // MQTT server params: server, port, user, password, and unique clientid
-const char* mqtt_server = "10.158.29.149";
+const char* mqtt_server = "10.158.28.8";
 const int mqtt_port = 1883; 
 const char *mqtt_user = "iotuser";
 const char *mqtt_pass = "iotpass";
