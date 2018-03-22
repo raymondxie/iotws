@@ -1,6 +1,6 @@
 # IoT Workshop
 
-Arduino/NodeMCU source code for IoT Workshop, hosted at Oracle Code 2017 events.
+Arduino/NodeMCU source code for IoT Workshop, hosted at [Oracle Code 2017](https://developer.oracle.com/code/past-developer-events) events.
 
 Please refer to [wiki page](https://github.com/raymondxie/iotws/wiki/) for instruction, steps and technical details.
 
